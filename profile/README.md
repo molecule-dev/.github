@@ -12,7 +12,7 @@
 
 ## Code is cheap. Scaling is not.
 
-Generating code is solved. The last 10%, the part that separates a toy prototype from a business that grows on hard data, is where Molecule lives.
+Code generation is now the easy part. The last 10%, the part that separates a toy prototype from a business that grows on hard data, is where Molecule lives.
 
 Every app needs the same integrations: payments, uploads, notifications, auth, search, and more. Most AI tools regenerate them from scratch every time. Molecule already has them, battle-tested and composable, so your tokens go toward what really matters.
 
