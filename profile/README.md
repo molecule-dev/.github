@@ -1,72 +1,66 @@
 <div align="center">
+  <a href="https://www.molecule.dev"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/molecule-dev/molecule/main/docs/assets/how-molecule-works-dark.svg">
+    <img src="https://raw.githubusercontent.com/molecule-dev/molecule/main/docs/assets/how-molecule-works-light.svg" alt="How Molecule works: describe an app, Synthase composes it from open-source @molecule packages, bonds make every provider swappable, and the result is plain TypeScript you own." width="100%">
+  </picture></a>
 
 # Molecule.dev
 
-**An AI-first, composable package ecosystem for building full-stack apps that scale.**
+**Describe an app. Get real, tested, full-stack TypeScript you own.**
 
-[molecule.dev](https://molecule.dev) · [Packages](https://github.com/molecule-dev/molecule)
+[molecule.dev](https://www.molecule.dev) · [Packages](https://github.com/molecule-dev/molecule) · [How it works](https://how-molecule-works.apps.mlcl.dev) · [Status](https://status.molecule.dev)
 
 </div>
 
 ---
 
-## Code is cheap. Scaling is not.
-
-Code generation is now the easy part. The last 10%, the part that separates a toy prototype from a business that grows on hard data, is where Molecule lives.
-
-Every app needs the same integrations: payments, uploads, notifications, auth, search, and more. Most AI tools regenerate them from scratch every time. Molecule already has them, battle-tested and composable, so your tokens go toward what really matters.
-
 ## What it is
 
-- **A composable package ecosystem.** A growing catalog of `@molecule/*` packages that connect through abstract interfaces and machine-readable docs, covering the parts every real app needs.
-- **An AI harness.** Synthase, the harness inside [molecule.dev](https://molecule.dev), assembles, runs, and deploys full-stack apps from those packages, on a new project or your existing repo.
-- **Real, decoupled architecture.** Not throwaway prototypes. Code seasoned teams can own, audit, and scale, composed from tested, maintained packages instead of one-off generated code.
+- **1,000+ composable `@molecule/*` packages** on npm, Apache-2.0. Auth, payments, databases, email, AI, search, realtime, uploads, analytics, i18n and more, for Express APIs and React, Vue, Svelte, Solid, Angular and React Native apps.
+- **Synthase**, the AI developer agent in [molecule.dev](https://www.molecule.dev). It picks packages, wires them, runs the app in a live sandbox, type-checks and tests it, and deploys it.
+- **150+ flagship templates** to start from a working app instead of a blank prompt.
+- **A CLI and an MCP server** so your own coding agent (Claude Code, Codex, Cursor and others) can search, scaffold, add and swap packages with structured tools.
 
-## The bond pattern
+## Why it's different
 
-Your code targets an interface, not a provider. Swap the implementation without rewriting your app.
+Your code calls an interface, never a vendor SDK. A **bond** wires the provider at startup, so swapping Postgres for MySQL, or one payments provider for another, changes one import.
 
 ```typescript
-import { bond } from '@molecule/api-bond'
-import { provider } from '@molecule/api-database-postgresql'
-import { findMany } from '@molecule/api-database'
+import { pool, store } from '@molecule/api-database-postgresql'
+import { setPool, setStore } from '@molecule/api-database'
 
-bond('database', provider)
+setPool(pool)
+setStore(store)
 
-// Same call, whichever provider you wire in.
-const users = await findMany('users')
+// Swap to MySQL or SQLite by changing the import above.
+// Application code keeps calling @molecule/api-database.
 ```
 
-Switch to SQLite, MySQL, or anything else by changing the import. [Read more.](https://github.com/molecule-dev/molecule#the-bond-system)
+Every package has a README generated from its source, so an AI agent can wire it correctly in one pass, even on smaller models.
 
-## Everything a real app needs
+## Built in, not bolted on
 
-Auth and OAuth, two-factor, payments, databases, caching, AI and agents, email, search, realtime, background jobs, scheduling, uploads, analytics, logging and monitoring, notifications, localization, accessibility, testing, CI/CD, and more. Each one a complete, tested package, built from the ground up for AI to understand and wire together.
+Typed, linted and tested before it reaches you, with unit, integration and E2E tests shipped in the project. Auth, migrations, i18n, logging, error tracking, analytics and user feedback are included, and an `AGENTS.md` teaches any coding agent the project's conventions.
 
-## Built like the best teams
+## No lock-in
 
-Typed, tested, CI/CD, migrations, monitoring, logging, analytics, rate limiting, security, no lock-in. The discipline serious teams expect, plus the instrumentation to scale on hard data, not hunches.
+Export the project code, a database dump and your `.env` files at any time, and run it anywhere. Deploy with us and pay for the metered AI and infrastructure you use, or self-host everything.
 
-## Open source, no lock-in
+## Repositories
 
-Everything is open source under Apache-2.0. You own the real, readable code, swap any provider, export it, and self-host anything. Deploy with us and pay only for the metered AI and infrastructure you use, or run it entirely yourself.
-
-## The stack
-
-TypeScript and Node on the backend, your choice of frontend (React, Vue, Svelte, and more), plus React Native for mobile. The architecture isn't tied to any one stack, so the list keeps growing, and we can add a new language or framework fast at any request.
-
-## Explore
-
-The full ecosystem lives in **[molecule](https://github.com/molecule-dev/molecule)**: the composable `@molecule/*` packages, each with machine-readable docs.
+| Repo | What's in it |
+| --- | --- |
+| [**molecule**](https://github.com/molecule-dev/molecule) | The `@molecule/*` package library. Start here. |
+| [**how-molecule-works**](https://github.com/molecule-dev/how-molecule-works) | The interactive walkthrough, built and deployed with Molecule itself. |
 
 ## Get started
 
-Describe what you need at **[molecule.dev](https://molecule.dev)**, and Synthase takes it from there. Or browse the packages and wire them in yourself with the bond pattern.
+Describe what you need at **[molecule.dev](https://www.molecule.dev)**, or browse the [packages](https://github.com/molecule-dev/molecule) and wire them in yourself.
 
 <div align="center">
 
 ---
 
-Apache-2.0 · Built to scale.
+Molecule Dev, Inc. · Apache-2.0
 
 </div>
